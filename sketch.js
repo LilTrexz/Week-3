@@ -8,11 +8,14 @@ let hokje6 = "";
 let hokje7 = "";
 let hokje8 = "";
 let hokje9 = "";
-let colorX = 'white';
+let colorX = 'black';
 let colorO = 'white';
 let winX = false;
 let winO = false;
 let tie = false;
+let golfY = 950;
+let golfSpeed = -0.5;
+let timer = 0;
 
 function setup() {
   createCanvas(900, 900);
@@ -22,67 +25,67 @@ function mouseClicked() {
   //kleur kiezen
 
   //links
-if (winX == false && winO == false && tie == false) {
-  if (mouseX > 10 && mouseX < 50 && mouseY > 10 && mouseY < 50) {
-    if (colorO != 'red') {
-      colorX = 'red'
+  if (winX == false && winO == false && tie == false) {
+    if (mouseX > 10 && mouseX < 50 && mouseY > 10 && mouseY < 50) {
+      if (colorO != 'red') {
+        colorX = 'red'
+      }
     }
-  }
-  if (mouseX > 55 && mouseX < 100 && mouseY > 10 && mouseY < 50) {
-    if (colorO != 'purple') {
-      colorX = 'purple'
+    if (mouseX > 55 && mouseX < 100 && mouseY > 10 && mouseY < 50) {
+      if (colorO != 'purple') {
+        colorX = 'purple'
+      }
     }
-  }
-  if (mouseX > 105 && mouseX < 150 && mouseY > 10 && mouseY < 50) {
-    if (colorO != 'blue') {
-      colorX = 'blue'
+    if (mouseX > 105 && mouseX < 150 && mouseY > 10 && mouseY < 50) {
+      if (colorO != 'blue') {
+        colorX = 'blue'
+      }
     }
-  }
-  if (mouseX > 155 && mouseX < 190 && mouseY > 10 && mouseY < 50) {
-    if (colorO != 'yellow') {
-      colorX = 'yellow'
+    if (mouseX > 155 && mouseX < 190 && mouseY > 10 && mouseY < 50) {
+      if (colorO != 'yellow') {
+        colorX = 'yellow'
+      }
     }
-  }
 
-  if (mouseX > 850 && mouseX < 890 && mouseY > 10 && mouseY < 50) {
-    fill("#700000");
-    square(845, 10, 45);
-  }
-  if (mouseX > 800 && mouseX < 845 && mouseY > 10 && mouseY < 50) {
-    fill("#500054");
-    square(795, 10, 45);
-  }
-  if (mouseX > 750 && mouseX < 795 && mouseY > 10 && mouseY < 50) {
-    fill("#02025c");
-    square(745, 10, 45);
-  }
-  if (mouseX > 700 && mouseX < 745 && mouseY > 10 && mouseY < 50) {
-    fill("#c2c400");
-    square(695, 10, 45);
-  }
+    if (mouseX > 850 && mouseX < 890 && mouseY > 10 && mouseY < 50) {
+      fill("#700000");
+      square(845, 10, 45);
+    }
+    if (mouseX > 800 && mouseX < 845 && mouseY > 10 && mouseY < 50) {
+      fill("#500054");
+      square(795, 10, 45);
+    }
+    if (mouseX > 750 && mouseX < 795 && mouseY > 10 && mouseY < 50) {
+      fill("#02025c");
+      square(745, 10, 45);
+    }
+    if (mouseX > 700 && mouseX < 745 && mouseY > 10 && mouseY < 50) {
+      fill("#c2c400");
+      square(695, 10, 45);
+    }
 
-  //rechts
-  if (mouseX > 850 && mouseX < 890 && mouseY > 10 && mouseY < 50) {
-    if (colorX != 'red') {
-      colorO = 'red'
+    //rechts
+    if (mouseX > 850 && mouseX < 890 && mouseY > 10 && mouseY < 50) {
+      if (colorX != 'red') {
+        colorO = 'red'
+      }
+    }
+    if (mouseX > 800 && mouseX < 845 && mouseY > 10 && mouseY < 50) {
+      if (colorX != 'purple') {
+        colorO = 'purple'
+      }
+    }
+    if (mouseX > 750 && mouseX < 795 && mouseY > 10 && mouseY < 50) {
+      if (colorX != 'blue') {
+        colorO = 'blue'
+      }
+    }
+    if (mouseX > 700 && mouseX < 745 && mouseY > 10 && mouseY < 50) {
+      if (colorX != 'yellow') {
+        colorO = 'yellow'
+      }
     }
   }
-  if (mouseX > 800 && mouseX < 845 && mouseY > 10 && mouseY < 50) {
-    if (colorX != 'purple') {
-      colorO = 'purple'
-    }
-  }
-  if (mouseX > 750 && mouseX < 795 && mouseY > 10 && mouseY < 50) {
-    if (colorX != 'blue') {
-      colorO = 'blue'
-    }
-  }
-  if (mouseX > 700 && mouseX < 745 && mouseY > 10 && mouseY < 50) {
-    if (colorX != 'yellow') {
-      colorO = 'yellow'
-    }
-  }
-}
 
   //reset knop
   if (mouseX > 250 && mouseX < 650 && mouseY > 750 && mouseY < 850) {
@@ -90,120 +93,120 @@ if (winX == false && winO == false && tie == false) {
   }
 
   //klik x en o
-if (winX == false && winO == false && tie == false) {
-  if (mouseX > 265 && mouseX < 380 && mouseY > 265 && mouseY < 380) {
+  if (winX == false && winO == false && tie == false) {
+    if (mouseX > 265 && mouseX < 380 && mouseY > 265 && mouseY < 380) {
 
-    if (hokje1 == "") {
-      hokje1 = beurt;
-      if (beurt == "x") {
-        beurt = "o";
+      if (hokje1 == "") {
+        hokje1 = beurt;
+        if (beurt == "x") {
+          beurt = "o";
+        }
+        else {
+          beurt = "x";
+        }
       }
-      else {
-        beurt = "x";
+    }
+    if (mouseX > 393 && mouseX < 508 && mouseY > 265 && mouseY < 380) {
+
+      if (hokje2 == "") {
+        hokje2 = beurt;
+        if (beurt == "x") {
+          beurt = "o";
+        }
+        else {
+          beurt = "x";
+        }
+      }
+    }
+    if (mouseX > 521 && mouseX < 636 && mouseY > 265 && mouseY < 380) {
+
+      if (hokje3 == "") {
+        hokje3 = beurt;
+        if (beurt == "x") {
+          beurt = "o";
+        }
+        else {
+          beurt = "x";
+        }
+      }
+    }
+    if (mouseX > 265 && mouseX < 380 && mouseY > 393 && mouseY < 508) {
+
+      if (hokje4 == "") {
+        hokje4 = beurt;
+        if (beurt == "x") {
+          beurt = "o";
+        }
+        else {
+          beurt = "x";
+        }
+      }
+    }
+    if (mouseX > 393 && mouseX < 508 && mouseY > 393 && mouseY < 508) {
+
+      if (hokje5 == "") {
+        hokje5 = beurt;
+        if (beurt == "x") {
+          beurt = "o";
+        }
+        else {
+          beurt = "x";
+        }
+      }
+    }
+    if (mouseX > 521 && mouseX < 636 && mouseY > 393 && mouseY < 508) {
+
+      if (hokje6 == "") {
+        hokje6 = beurt;
+        if (beurt == "x") {
+          beurt = "o";
+        }
+        else {
+          beurt = "x";
+        }
+      }
+    }
+    if (mouseX > 265 && mouseX < 380 && mouseY > 521 && mouseY < 636) {
+
+      if (hokje7 == "") {
+        hokje7 = beurt;
+        if (beurt == "x") {
+          beurt = "o";
+        }
+        else {
+          beurt = "x";
+        }
+      }
+    }
+    if (mouseX > 393 && mouseX < 508 && mouseY > 521 && mouseY < 636) {
+
+      if (hokje8 == "") {
+        hokje8 = beurt;
+        if (beurt == "x") {
+          beurt = "o";
+        }
+        else {
+          beurt = "x";
+        }
+      }
+    }
+    if (mouseX > 521 && mouseX < 636 && mouseY > 521 && mouseY < 636) {
+
+      if (hokje9 == "") {
+        hokje9 = beurt;
+        if (beurt == "x") {
+          beurt = "o";
+        }
+        else {
+          beurt = "x";
+        }
       }
     }
   }
-  if (mouseX > 393 && mouseX < 508 && mouseY > 265 && mouseY < 380) {
-
-    if (hokje2 == "") {
-      hokje2 = beurt;
-      if (beurt == "x") {
-        beurt = "o";
-      }
-      else {
-        beurt = "x";
-      }
-    }
-  }
-  if (mouseX > 521 && mouseX < 636 && mouseY > 265 && mouseY < 380) {
-
-    if (hokje3 == "") {
-      hokje3 = beurt;
-      if (beurt == "x") {
-        beurt = "o";
-      }
-      else {
-        beurt = "x";
-      }
-    }
-  }
-  if (mouseX > 265 && mouseX < 380 && mouseY > 393 && mouseY < 508) {
-
-    if (hokje4 == "") {
-      hokje4 = beurt;
-      if (beurt == "x") {
-        beurt = "o";
-      }
-      else {
-        beurt = "x";
-      }
-    }
-  }
-  if (mouseX > 393 && mouseX < 508 && mouseY > 393 && mouseY < 508) {
-
-    if (hokje5 == "") {
-      hokje5 = beurt;
-      if (beurt == "x") {
-        beurt = "o";
-      }
-      else {
-        beurt = "x";
-      }
-    }
-  }
-  if (mouseX > 521 && mouseX < 636 && mouseY > 393 && mouseY < 508) {
-
-    if (hokje6 == "") {
-      hokje6 = beurt;
-      if (beurt == "x") {
-        beurt = "o";
-      }
-      else {
-        beurt = "x";
-      }
-    }
-  }
-  if (mouseX > 265 && mouseX < 380 && mouseY > 521 && mouseY < 636) {
-
-    if (hokje7 == "") {
-      hokje7 = beurt;
-      if (beurt == "x") {
-        beurt = "o";
-      }
-      else {
-        beurt = "x";
-      }
-    }
-  }
-  if (mouseX > 393 && mouseX < 508 && mouseY > 521 && mouseY < 636) {
-
-    if (hokje8 == "") {
-      hokje8 = beurt;
-      if (beurt == "x") {
-        beurt = "o";
-      }
-      else {
-        beurt = "x";
-      }
-    }
-  }
-  if (mouseX > 521 && mouseX < 636 && mouseY > 521 && mouseY < 636) {
-
-    if (hokje9 == "") {
-      hokje9 = beurt;
-      if (beurt == "x") {
-        beurt = "o";
-      }
-      else {
-        beurt = "x";
-      }
-    }
-  }
-}
 }
 
 function draw() {
-  background("lightBlue");
+  background('#dacdad');
 
   //vlaggen pop-up
   if (winX == false && winO == false && tie == false) {
@@ -229,44 +232,35 @@ function draw() {
   //kleur kiezen
 
   //links
-if (winX == false && winO == false && tie == false) {
-  strokeWeight(3);
-  stroke('black');
-  fill("red");
-  square(10, 10, 45);
+  if (winX == false && winO == false && tie == false) {
+    strokeWeight(3);
+    stroke('black');
+    fill("red");
+    square(10, 10, 45);
 
-  fill("purple");
-  square(60, 10, 45);
+    fill("purple");
+    square(60, 10, 45);
 
-  fill("blue");
-  square(110, 10, 45);
+    fill("blue");
+    square(110, 10, 45);
 
-  fill("yellow");
-  square(160, 10, 45);
+    fill("yellow");
+    square(160, 10, 45);
 
-  //rechts
-  fill("red");
-  square(845, 10, 45);
+    //rechts
+    fill("red");
+    square(845, 10, 45);
 
-  fill("purple");
-  square(795, 10, 45);
+    fill("purple");
+    square(795, 10, 45);
 
-  fill("blue");
-  square(745, 10, 45);
+    fill("blue");
+    square(745, 10, 45);
 
-  fill("yellow");
-  square(695, 10, 45);
-}
-
-  //reset knop
-  if (winX == true || winO == true || tie == true) {
-    fill('#6b550d');
-    noStroke();
-    rect(250, 750, 400, 100, 15);
-
-    fill("white");
-    text('Reset', 345, 825);
+    fill("yellow");
+    square(695, 10, 45);
   }
+
 
   //het bord
   noStroke();
@@ -287,39 +281,88 @@ if (winX == false && winO == false && tie == false) {
   //hover modus kleuren kiezen
 
   //links
-  if (mouseX > 10 && mouseX < 55 && mouseY > 10 && mouseY < 50) {
-    fill("#700000");
-    square(10, 10, 45);
-  }
-  if (mouseX > 60 && mouseX < 105 && mouseY > 10 && mouseY < 50) {
-    fill("#500054");
-    square(60, 10, 45);
-  }
-  if (mouseX > 110 && mouseX < 155 && mouseY > 10 && mouseY < 50) {
-    fill("#02025c");
-    square(110, 10, 45);
-  }
-  if (mouseX > 160 && mouseX < 195 && mouseY > 10 && mouseY < 50) {
-    fill("#c2c400");
-    square(160, 10, 45);
+  if (winX == false && winO == false && tie == false) {
+    if (mouseX > 10 && mouseX < 55 && mouseY > 10 && mouseY < 50) {
+      fill("#700000");
+      square(10, 10, 45);
+    }
+    if (mouseX > 60 && mouseX < 105 && mouseY > 10 && mouseY < 50) {
+      fill("#500054");
+      square(60, 10, 45);
+    }
+    if (mouseX > 110 && mouseX < 155 && mouseY > 10 && mouseY < 50) {
+      fill("#02025c");
+      square(110, 10, 45);
+    }
+    if (mouseX > 160 && mouseX < 195 && mouseY > 10 && mouseY < 50) {
+      fill("#c2c400");
+      square(160, 10, 45);
+    }
+
+    //rechts
+    if (mouseX > 845 && mouseX < 890 && mouseY > 10 && mouseY < 50) {
+      fill("#700000");
+      square(845, 10, 45);
+    }
+    if (mouseX > 795 && mouseX < 840 && mouseY > 10 && mouseY < 50) {
+      fill("#500054");
+      square(795, 10, 45);
+    }
+    if (mouseX > 745 && mouseX < 790 && mouseY > 10 && mouseY < 50) {
+      fill("#02025c");
+      square(745, 10, 45);
+    }
+    if (mouseX > 695 && mouseX < 740 && mouseY > 10 && mouseY < 50) {
+      fill("#c2c400");
+      square(695, 10, 45);
+    }
   }
 
-  //rechts
-  if (mouseX > 850 && mouseX < 890 && mouseY > 10 && mouseY < 50) {
-    fill("#700000");
-    square(845, 10, 45);
+
+  //hover modus spel
+  textFont('Arial');
+  if (winX == false && winO == false && tie == false) {
+    if (mouseX > 265 && mouseX < 380 && mouseY > 265 && mouseY < 380 && hokje1 == "") {
+      fill('#A19A87');
+      rect(265, 265, 115, 115, 15);
+    }
   }
-  if (mouseX > 800 && mouseX < 845 && mouseY > 10 && mouseY < 50) {
-    fill("#500054");
-    square(795, 10, 45);
+
+  //nat zand
+  noStroke();
+  timer = timer + 1;
+
+  if (timer > 390) {
+    fill('#beb69e')
+    quad(0, 720, 900, 760, 900, 900, 0, 900);
+    fill('#a59e89')
+    quad(0, 780, 900, 820, 900, 900, 0, 900);
   }
-  if (mouseX > 750 && mouseX < 795 && mouseY > 10 && mouseY < 50) {
-    fill("#02025c");
-    square(745, 10, 45);
+
+  //golven
+  fill('#4a82e2');
+  quad(0, golfY - 40, 900, golfY, 900, 900, 0, 900);
+  fill('#6b9cf0');
+  quad(0, golfY - 20 + 60, 900, golfY + 60, 900, 900, 0, 900);
+
+  golfY = golfY + golfSpeed;
+
+  if (golfY == 760) {
+    golfSpeed = 0.5;
   }
-  if (mouseX > 700 && mouseX < 745 && mouseY > 10 && mouseY < 50) {
-    fill("#c2c400");
-    square(695, 10, 45);
+  if (golfY == 890) {
+    golfSpeed = -0.5;
+  }
+
+  //reset knop
+  if (winX == true || winO == true || tie == true) {
+    fill('#6b550d');
+    noStroke();
+    rect(250, 750, 400, 100, 15);
+
+    textFont('Cooper Black')
+    fill("white");
+    text('Reset', 345, 825);
   }
 
   //hover modus reset knop
@@ -335,15 +378,8 @@ if (winX == false && winO == false && tie == false) {
     }
   }
 
-  //hover modus spel
-  textFont('Arial');
+  textFont('Arial')
   if (winX == false && winO == false && tie == false) {
-    if (mouseX > 265 && mouseX < 380 && mouseY > 265 && mouseY < 380 && hokje1 == "") {
-      fill('#A19A87');
-      rect(265, 265, 115, 115, 15);
-    }
-
-
     if (mouseX > 393 && mouseX < 508 && mouseY > 265 && mouseY < 380 && hokje2 == "") {
       fill('#A19A87');
       rect(393, 265, 115, 115, 15);
@@ -542,6 +578,7 @@ if (winX == false && winO == false && tie == false) {
     fill('black');
     text('Tie', 380, 125);
   }
+
 }
 
 function reset() {
@@ -555,7 +592,7 @@ function reset() {
   hokje7 = "";
   hokje8 = "";
   hokje9 = "";
-  colorX = 'white';
+  colorX = 'black';
   colorO = 'white';
   winX = false;
   winO = false;
